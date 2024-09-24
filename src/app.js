@@ -25,8 +25,8 @@ app.get("/user", async (req, res) => {
     else {
       res.send("user doesn't exist with this email id");
     }
-  } catch (e) {
-    res.send("something went wrong!");
+  } catch (error) {
+    res.send(error.message);
   }
 });
 
@@ -37,8 +37,8 @@ app.get("/feed", async (req, res) => {
     else {
       res.send("no user in the DB!");
     }
-  } catch (e) {
-    res.send("something went wrong!");
+  } catch (error) {
+    res.send(error.message);
   }
 });
 
@@ -47,8 +47,8 @@ app.delete("/delete", async (req, res) => {
   try {
     const data = await User.findByIdAndDelete(userId);
     res.send("user deleted successfully!" + data);
-  } catch (e) {
-    res.send("something went wrong!");
+  } catch (error) {
+    res.send(error.message);
   }
 });
 
